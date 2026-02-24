@@ -12,6 +12,7 @@ public class Main {
         String name = sc.nextLine();
         System.out.println("hello " + name);
         Scanner id = new Scanner(System.in);
+
         double d = id.nextDouble();
         System.out.println(d);
 
