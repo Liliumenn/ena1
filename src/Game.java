@@ -51,6 +51,7 @@ public class Game {
                         for (int y = 0; y < sizeboard; y++) {
                             for (int x = 0; x < sizeboard; x++) {
                                 board[y][x] = "  ";
+
                             }
                         }
 
