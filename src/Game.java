@@ -23,6 +23,7 @@ public class Game {
 
         int maxStep = 2;
 
+        Person person = new Person();
         String castle = "З";
         String person = "Гг";
         String monster = "Мм";
@@ -49,8 +50,8 @@ public class Game {
 
         String[][] board = new String[sizeboard][sizeboard];
         for (int y = 0; y < sizeboard; y++) {
-            for (int x = 0; x < sizeboard; x++) {
-                board[y][x] = "  ";
+            for (int b = 0; b < sizeboard; b++) {
+                board[y][b] = "  ";
 
             }
         }
@@ -94,23 +95,26 @@ public class Game {
                     }
                     System.out.println(wall);
 
-
                     System.out.println("Введите куда будет ходить персонаж (ход только по вертикали и горизонтали на одну клетку;");
                     System.out.println("Координаты персонажа - (x: " + personX + ", y: " + personY + "))");
                     int x = scanner.nextInt();
                     int y = scanner.nextInt();
-                    if (x != personX && y != personY) {
-                        System.out.println("Неккоректный ход");
-                    } else if (Math.abs(x - personX) == 1 || Math.abs(y - personY) == 1) {
-                        step++;
-                        if (board[y - 1][x - 1].equals("  ")) {
-                            board[personY - 1][personX - 1] = "  ";
-                            personX = x;
-                            personY = y;
-                            System.out.println("Ход корректный; Новые координаты: " + personX + ", " + personY +
-                                    "\nХод номер: " + step);
-                        } else if (board[y - 1][x - 1].equals(castle)) {
-                            System.out.println("Вы ПРОШЛИ игру!!!!!");
+
+                    if (person.moveCorrect(x, y)) {
+
+                    //if (x != personX && y != personY) {
+                      //  System.out.println("Неккоректный ход");
+                    //} else if (Math.abs(x - personX) == 1 || Math.abs(y - personY) == 1) {
+                      //  step++;
+                        //if (board[y - 1][x - 1].equals("  ")) {
+                         //   board[personY - 1][personX - 1] = "  ";
+                           // personX = x;
+                           // personY = y;
+                            // System.out.println("Ход корректный; Новые координаты: " + personX + ", " + personY +
+                               //     "\nХод номер: " + step);
+                        // } else if (board[y - 1][x - 1].equals(castle)) {
+                           // System.out.println("Вы ПРОШЛИ игру!!!!!");
+                            //break;
                         } else {
                             System.out.println("Реши задачку!");
                             taskMonster();
