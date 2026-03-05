@@ -24,6 +24,9 @@ bin/
 
 ### VS Code ###
 .vscode/
-
+.idea/
+.gigaide/
+.ena.iml
+StartHEILSMEC1.iml
 ### Mac OS ###
 .DS_Store

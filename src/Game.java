@@ -23,7 +23,7 @@ public class Game {
 
         int maxStep = 2;
 
-        Person person = new Person();
+        Person personn = new Person();
         String castle = "З";
         String person = "Гг";
         String monster = "Мм";
@@ -100,7 +100,7 @@ public class Game {
                     int x = scanner.nextInt();
                     int y = scanner.nextInt();
 
-                    if (person.moveCorrect(x, y)) {
+//                    if (person.moveCorrect(x, y)) {
 
                     //if (x != personX && y != personY) {
                       //  System.out.println("Неккоректный ход");
@@ -115,14 +115,14 @@ public class Game {
                         // } else if (board[y - 1][x - 1].equals(castle)) {
                            // System.out.println("Вы ПРОШЛИ игру!!!!!");
                             //break;
-                        } else {
-                            System.out.println("Реши задачку!");
-                            taskMonster();
-                        }
-
-                    } else {
-                        System.out.println("Координаты не изменены");
-                    }
+//                        } else {
+//                            System.out.println("Реши задачку!");
+//                            taskMonster();
+//                        }
+//
+//                    } else {
+//                        System.out.println("Координаты не изменены");
+//                    }
                 }
                 ///
             }
