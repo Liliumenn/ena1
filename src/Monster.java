@@ -27,6 +27,10 @@ public class Monster {
         return r;
     }
 
+    public boolean taskMonster(int difficultGame) {
+        return taskMonster();
+    }
+
     public boolean taskMonster() {
         Random r = new Random();
         int x = r.nextInt(10);
@@ -45,6 +49,6 @@ public class Monster {
     }
 
     public boolean conflictPerson ( Person p) {
-        return p.getX() == this.x && p.getY() == this.y;
+        return (p.getX() - 1) == this.x && (p.getY() - 1 )== this.y;
     }
 }

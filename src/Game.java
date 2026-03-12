@@ -35,8 +35,12 @@ public class Game {
         int count = 0;
         Monster test;
         while (count <= countMonster) {
-            test = new Monster(sizeboard);
-            if (board[test.getY()][test.getX()].equals("  ")) {
+            if (r.nextBoolean()) {
+                test = new Monster(sizeboard);
+            }else {
+                test = new BigMonster(sizeboard);
+            }
+            if (board[test.getY()][test.getX()].equals("  ")){
                 board[test.getY()][test.getX()] = test.getImage();
                 arrMonster[count] = test;
                 count++;
@@ -65,12 +69,12 @@ public class Game {
                 while (true) {
                     board[person.getY() - 1][person.getX() - 1] = person.getImage();
 
-                    for (int y = 1; y <= sizeboard; y++) {
+                    for (int x = 1; x <= sizeboard; x++) {
                         System.out.println(wall);
-                        for (int x = 1; x <= sizeboard; x++) {
+                        for (int y = 1; y <= sizeboard; y++) {
                             System.out.print(leftBlock);
 
-                            System.out.print(board[y - 1][x - 1]);
+                            System.out.print(board[x - 1][y - 1]);
 
                         }
                         System.out.println(rightBlock);
@@ -83,56 +87,37 @@ public class Game {
                     int y = scanner.nextInt();
 
                     if (person.moveCorrect(x, y)) {
-                        String next = board[x - 1][y - 1];
+                        String next = board[y - 1][x - 1];
                         if (next.equals("  ")) {
                             board[person.getY() - 1][person.getX() - 1] = "  ";
                             person.move(x, y);
                             step++;
-                            System.out.println("Ход корректный; Новые координаты: " + person.getX() + ", " + person.getY() + "\nХод номер: " + step);
+                            System.out.println("Ход корректный; Новые координаты: " + person.getX() + ", " + person.getY() +
+                                    "\nХод номер: " + step);
                         } else if (next.equals(castle)) {
-                            System.out.println("Вы ПРОШЛИ игру!!!!!");
+                            System.out.println("Вы прошли игру!");
                             break;
                         } else {
                             for (Monster monster : arrMonster) {
                                 if (monster.conflictPerson(person)) {
-                                    if (monster.taskMonster()) {
+                                    if (monster.taskMonster(difficultGame)) {
                                         board[person.getY() - 1][person.getX() - 1] = "  ";
                                         person.move(x, y);
-                                    }
+                                    } else {
+                                    person.downlive();
                                 }
-
+                                break;
+                                }
                             }
-
                         }
-                        //if (x != personX && y != personY) {
-                        //  System.out.println("Неккоректный ход");
-                        //} else if (Math.abs(x - personX) == 1 || Math.abs(y - personY) == 1) {
-                        //  step++;
-                        //if (board[y - 1][x - 1].equals("  ")) {
-                        //   board[personY - 1][personX - 1] = "  ";
-                        // personX = x;
-                        // personY = y;
-                        // System.out.println("Ход корректный; Новые координаты: " + personX + ", " + personY +
-                        //     "\nХод номер: " + step);
-                        // } else if (board[y - 1][x - 1].equals(castle)) {
-                        // System.out.println("Вы ПРОШЛИ игру!!!!!");
-                        //break;
-                        //} else {
-                        //System.out.println("Реши задачку!");
-                        //taskMonster();
-                        // }
-
                     } else {
                         System.out.println("Координаты не изменены");
                     }
                 }
-
             } case "НЕТ" -> {
                 System.out.println("Почему не хочешь :(" + "\nЗаходи ещё");
             }
             default -> System.out.println("Данные введены неккоректно");
-
-
         }
     }
 }
