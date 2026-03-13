@@ -35,10 +35,12 @@ public class Game {
         int count = 0;
         Monster test;
         while (count <= countMonster) {
-            if (r.nextBoolean()) {
+            if (r.nextInt(3)==0){
                 test = new Monster(sizeboard);
-            }else {
+            }else if (r.nextInt(3)==1){
                 test = new BigMonster(sizeboard);
+            }else {
+                test = new MyMonster(sizeboard);
             }
             if (board[test.getY()][test.getX()].equals("  ")){
                 board[test.getY()][test.getX()] = test.getImage();
