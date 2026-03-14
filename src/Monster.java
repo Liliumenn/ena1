@@ -26,7 +26,6 @@ public class Monster {
     public Random getR() {
         return r;
     }
-
     public boolean taskMonster(int difficultGame) {
         return taskMonster();
     }

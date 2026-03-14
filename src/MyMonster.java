@@ -21,6 +21,14 @@ public class MyMonster extends BigMonster {
         System.out.println("Решите задачу:");
         if (difficultGame == 1) {
             System.out.println("какая буква пропущена? - к_лосок 1)а 2)о ");
+            int myTrueAnswer = 2;
+            Scanner sc = new Scanner(System.in);
+            int ans = sc.nextInt();
+            if (myTrueAnswer == ans) {
+                System.out.println("Ты победил монстра");
+                return true;
+            }
+            System.out.println("Ты проиграл");
         } else {
             int x = r.nextInt(10 * (difficultGame - 1), 10 * difficultGame);
             int y = r.nextInt(10 * (difficultGame - 1), 10 * difficultGame);
@@ -38,7 +46,5 @@ public class MyMonster extends BigMonster {
 
         return false;
     }
-    public boolean taskMonster() {
-        return super.taskMonster(0);
-    }
+
 }
