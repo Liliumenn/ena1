@@ -10,7 +10,7 @@ public class Game {
 
         int maxStep = 2;
 
-        String castle = "З";
+        String castle = "Зз";
 
         int step = 0;
         int sizeboard = 5;
@@ -64,6 +64,10 @@ public class Game {
             case "ДА" -> {
                 System.out.println("Выбери сложность от 1 до 5");
                 int difficultGame = scanner.nextInt();
+                if (difficultGame < 1) {
+                    difficultGame = 1;}
+                if (difficultGame > 5){
+                    difficultGame = 5;}
                 System.out.println("Выбранная сложность: " + difficultGame);
 
 
@@ -106,9 +110,9 @@ public class Game {
                                         board[person.getY() - 1][person.getX() - 1] = "  ";
                                         person.move(x, y);
                                     } else {
-                                    person.downlive();
-                                }
-                                break;
+                                        person.downlive();
+                                    }
+                                    break;
                                 }
                             }
                         }
